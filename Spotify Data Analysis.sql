@@ -195,3 +195,16 @@ SELECT
 FROM cte
 ORDER BY 2 DESC;
 
+-- Query Optimization
+EXPLAIN ANALYZE
+SELECT
+	artist,
+	track,
+	views
+FROM spotify 
+WHERE artist = 'Gorillaz',
+	AND
+	most_played_on = 'Youtube'
+ORDER BY stream DESC LIMIT 25
+
+CREATE INDEX artist_index ON spotify (artist);
